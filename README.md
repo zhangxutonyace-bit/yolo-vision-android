@@ -4,6 +4,16 @@
 
 版本：0.1.0。应用标识：`cn.local.yolovision`。最低 Android 8.0（API 26）。这是独立开发的体验版，并非 Ultralytics 官方 App。
 
+## 下载 APK
+
+**[点击下载 YOLO 视觉 0.1.0 安卓安装包](https://github.com/zhangxutonyace-bit/yolo-vision-android/releases/download/v0.1.0/YOLO-Vision-0.1.0-android.apk)**
+
+约 53 MB，适用于 Android 8.0 及以上。手机打开链接下载后，点击 APK，按系统提示允许当前浏览器或文件管理器安装应用，再打开应用并允许相机权限。内置模型无需额外下载。
+
+[版本说明与文件校验](https://github.com/zhangxutonyace-bit/yolo-vision-android/releases/tag/v0.1.0)
+
+这是使用开发测试签名的体验版，已在 HONOR DVD-AN80（Android 16）完成主要流程检查。识别结果仍可能出错；其他手机兼容性以实际使用为准。
+
 ## 已实现
 
 - 相机实时识别，青色识别框，常见目标中文标签。
@@ -22,7 +32,7 @@ Android 模型输出需要客户端执行 NMS，因此检测、实例分割、�
 
 ## 安装和使用
 
-1. 按[构建说明](docs/BUILD.md)生成 `app/build/outputs/apk/debug/app-debug.apk`，或使用 Android Studio 直接安装。
+1. 点击上方 **下载 APK** 获取安装包。开发者也可按[构建说明](docs/BUILD.md)自行编译。
 2. 从手机文件管理器打开 APK，按系统提示允许该文件管理器安装应用。
 3. 打开 **YOLO 视觉**，点击“开启相机”，允许相机权限。
 4. 首次会载入内置目标检测模型，对准人物、车辆、椅子等常见物体即可观察结果。
@@ -31,7 +41,7 @@ Android 模型输出需要客户端执行 NMS，因此检测、实例分割、�
 
 如模型无法载入，进入设置关闭“优先硬件加速”后重试。速度和支持的镜头取决于手机。可选模型下载需要连接 GitHub；网络不可达时仍可使用内置轻量模型。
 
-仓库提供完整源码与模型，不包含预编译 APK 或签名私钥。当前构建配置使用开发测试签名，适合安装体验；应用商店发布需要维护者配置自己的正式签名。
+完整源码与模型保存在仓库，预编译安装包和许可附件发布在 [GitHub Releases](https://github.com/zhangxutonyace-bit/yolo-vision-android/releases)。当前构建配置使用开发测试签名，适合安装体验；应用商店发布需要维护者配置自己的正式签名。
 
 ## 验证边界
 

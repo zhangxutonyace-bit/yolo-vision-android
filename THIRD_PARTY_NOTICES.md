@@ -23,4 +23,19 @@
 - JUnit：EPL-1.0，仅用于测试。
 - Android Gradle Plugin / Gradle Wrapper：Apache-2.0，工具自身许可以官方发行内容为准。
 
+上述是主要组件的许可摘要，不表示整个 APK 中的所有依赖都采用同一许可。LiteRT 的运行时传递依赖还包括：
+
+- `com.google.android.play:ai-delivery:0.1.1-alpha01`
+- `com.google.android.play:asset-delivery:2.3.0`
+- `com.google.android.play:core-common:2.0.4`
+
+这些组件的发布 POM 指向 [Play Core 条款](https://developer.android.com/guide/playcore#license)。
+
+- `com.google.android.gms:play-services-basement:18.4.0`
+- `com.google.android.gms:play-services-tasks:18.2.0`
+
+这两个组件的发布 POM 指向 [Android SDK License](https://developer.android.com/studio/terms)。项目源码的 AGPL-3.0 声明不改变这些第三方组件各自的条款。
+
+实际运行时组件清单、许可地址以及依赖包内的 LICENSE / NOTICE 原文见 [THIRD_PARTY_LICENSES.txt](THIRD_PARTY_LICENSES.txt)。GitHub Release 同时提供该附件，与对应 APK 一起发布。
+
 上述依赖的代码、许可和发布元数据由各自官方仓库提供。本项目不是以上组织的官方产品。
