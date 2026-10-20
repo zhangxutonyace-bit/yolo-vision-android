@@ -1,0 +1,212 @@
+[
+  {
+    "file": "yolo26l-cls_w8a32.tflite",
+    "sha256": "ec44bad1eeb1e89333a4505a6761989e10c650177d9881e13849903c58d8bb36",
+    "bytes": 14532425,
+    "url": "https://github.com/ultralytics/yolo-flutter-app/releases/download/v0.6.6/yolo26l-cls_w8a32.tflite"
+  },
+  {
+    "file": "yolo26l-depth_w8a32.tflite",
+    "sha256": "9d71c462112738c87047aa4dfafe567c11dc59c3fa15aa0042888da460820da0",
+    "bytes": 27211341,
+    "url": "https://github.com/ultralytics/yolo-flutter-app/releases/download/v0.6.6/yolo26l-depth_w8a32.tflite"
+  },
+  {
+    "file": "yolo26l-obb_w8a32.tflite",
+    "sha256": "0d6c7f955fe2c502b39dd9ebc8c8b2ee981b7491f462fb32fab58ccdaceb1be1",
+    "bytes": 26580431,
+    "url": "https://github.com/ultralytics/yolo-flutter-app/releases/download/v0.6.6/yolo26l-obb_w8a32.tflite"
+  },
+  {
+    "file": "yolo26l-pose_w8a32.tflite",
+    "sha256": "63cfb497e689ed91b6150cfe9dacf9987422ff2e91f78e302d505408721221ad",
+    "bytes": 27014276,
+    "url": "https://github.com/ultralytics/yolo-flutter-app/releases/download/v0.6.6/yolo26l-pose_w8a32.tflite"
+  },
+  {
+    "file": "yolo26l-seg_w8a32.tflite",
+    "sha256": "366a336cd4b8609c4885bb91af0a35f44468f2cdb54e6fbb928e2c40e95c4951",
+    "bytes": 28993000,
+    "url": "https://github.com/ultralytics/yolo-flutter-app/releases/download/v0.6.6/yolo26l-seg_w8a32.tflite"
+  },
+  {
+    "file": "yolo26l-sem_w8a32.tflite",
+    "sha256": "9d8e5c7a73e1682055086ab5897900b817809297fc02ccefbb2cec9aae19b9db",
+    "bytes": 17208077,
+    "url": "https://github.com/ultralytics/yolo-flutter-app/releases/download/v0.6.6/yolo26l-sem_w8a32.tflite"
+  },
+  {
+    "file": "yolo26l_w8a32.tflite",
+    "sha256": "480d590014a337aa0a6b05d32a09d4aa79e5f4f0c15e171c1ebdabc60ed4a986",
+    "bytes": 25768291,
+    "url": "https://github.com/ultralytics/yolo-flutter-app/releases/download/v0.6.6/yolo26l_w8a32.tflite"
+  },
+  {
+    "file": "yolo26m-cls_w8a32.tflite",
+    "sha256": "e994f50a3c578be47d826cafc18bac477de661a06b93c117d9d6745c8e7a5e00",
+    "bytes": 11918553,
+    "url": "https://github.com/ultralytics/yolo-flutter-app/releases/download/v0.6.6/yolo26m-cls_w8a32.tflite"
+  },
+  {
+    "file": "yolo26m-depth_w8a32.tflite",
+    "sha256": "f3e3e42254e049fd9223d8478abb9901e8f77e65a3537c7d0743afc1091f8360",
+    "bytes": 22600206,
+    "url": "https://github.com/ultralytics/yolo-flutter-app/releases/download/v0.6.6/yolo26m-depth_w8a32.tflite"
+  },
+  {
+    "file": "yolo26m-obb_w8a32.tflite",
+    "sha256": "d9ec6c2a23f4a4c2a5f072ca14881c9dec8df58d2f741ee7927897b85f4ed710",
+    "bytes": 21950304,
+    "url": "https://github.com/ultralytics/yolo-flutter-app/releases/download/v0.6.6/yolo26m-obb_w8a32.tflite"
+  },
+  {
+    "file": "yolo26m-pose_w8a32.tflite",
+    "sha256": "50c04c22b095884e2a36f95212dd0f6b8058010bca1709e19d678feb86667d3f",
+    "bytes": 22383765,
+    "url": "https://github.com/ultralytics/yolo-flutter-app/releases/download/v0.6.6/yolo26m-pose_w8a32.tflite"
+  },
+  {
+    "file": "yolo26m-seg_w8a32.tflite",
+    "sha256": "fe512baf45c5d764b5cc43ae5626e70ca48a297bc42f8a9a3edc83aef3800030",
+    "bytes": 24359610,
+    "url": "https://github.com/ultralytics/yolo-flutter-app/releases/download/v0.6.6/yolo26m-seg_w8a32.tflite"
+  },
+  {
+    "file": "yolo26m-sem_w8a32.tflite",
+    "sha256": "6a55790e473e521a0ba27bee0d23b12fb8d99e6c9b24307df3243c75d16b98ba",
+    "bytes": 13475438,
+    "url": "https://github.com/ultralytics/yolo-flutter-app/releases/download/v0.6.6/yolo26m-sem_w8a32.tflite"
+  },
+  {
+    "file": "yolo26m_w8a32.tflite",
+    "sha256": "61426a2722164614e7cd2469dfd47636db17bd7d95700183a42d64eff0451c35",
+    "bytes": 21135908,
+    "url": "https://github.com/ultralytics/yolo-flutter-app/releases/download/v0.6.6/yolo26m_w8a32.tflite"
+  },
+  {
+    "file": "yolo26n-cls_w8a32.tflite",
+    "sha256": "0e39b06acd73645d71374a5ea8468ee9cd90a72f89df18fd11a4f97248a573ea",
+    "bytes": 2985143,
+    "url": "https://github.com/ultralytics/yolo-flutter-app/releases/download/v0.6.6/yolo26n-cls_w8a32.tflite"
+  },
+  {
+    "file": "yolo26n-depth_w8a32.tflite",
+    "sha256": "8c7f242c2a8c339c6721863e103e17e026cbd784c9a3d031a8e902660c364311",
+    "bytes": 5474749,
+    "url": "https://github.com/ultralytics/yolo-flutter-app/releases/download/v0.6.6/yolo26n-depth_w8a32.tflite"
+  },
+  {
+    "file": "yolo26n-obb_w8a32.tflite",
+    "sha256": "259b8b41e290f9431eae816e86b33422a53eac490a8ea2715f70d6da798ba5d3",
+    "bytes": 2926110,
+    "url": "https://github.com/ultralytics/yolo-flutter-app/releases/download/v0.6.6/yolo26n-obb_w8a32.tflite"
+  },
+  {
+    "file": "yolo26n-pose_w8a32.tflite",
+    "sha256": "50ff5869a7f77db2890eb4b23f00d678e9a77cdea899100712218c2c3a91dbc7",
+    "bytes": 3512325,
+    "url": "https://github.com/ultralytics/yolo-flutter-app/releases/download/v0.6.6/yolo26n-pose_w8a32.tflite"
+  },
+  {
+    "file": "yolo26n-seg_w8a32.tflite",
+    "sha256": "3a9d800e59071e32516511bd788bf73a229e8b62c09eed96d6789894bc238acf",
+    "bytes": 3234566,
+    "url": "https://github.com/ultralytics/yolo-flutter-app/releases/download/v0.6.6/yolo26n-seg_w8a32.tflite"
+  },
+  {
+    "file": "yolo26n-sem_w8a32.tflite",
+    "sha256": "d29dee0289f29be7e1446095e843109cdff7bdddba9bfd2ffd525425fbc5f557",
+    "bytes": 1748412,
+    "url": "https://github.com/ultralytics/yolo-flutter-app/releases/download/v0.6.6/yolo26n-sem_w8a32.tflite"
+  },
+  {
+    "file": "yolo26n_w8a32.tflite",
+    "sha256": "d9cef07ce652ccfa9ce58e4ac8a4df98ff037739a9dad20a8afcae21b545df73",
+    "bytes": 2875553,
+    "url": "https://github.com/ultralytics/yolo-flutter-app/releases/download/v0.6.6/yolo26n_w8a32.tflite"
+  },
+  {
+    "file": "yolo26s-cls_w8a32.tflite",
+    "sha256": "680dda71c133b33a496ad80d8dd3e3aad793c6b902d53598d8646c035ad8645e",
+    "bytes": 6950359,
+    "url": "https://github.com/ultralytics/yolo-flutter-app/releases/download/v0.6.6/yolo26s-cls_w8a32.tflite"
+  },
+  {
+    "file": "yolo26s-depth_w8a32.tflite",
+    "sha256": "0e0684e9216757423c38567444901027da8dd93318b21dd921b5ffcdc332ef55",
+    "bytes": 12444828,
+    "url": "https://github.com/ultralytics/yolo-flutter-app/releases/download/v0.6.6/yolo26s-depth_w8a32.tflite"
+  },
+  {
+    "file": "yolo26s-obb_w8a32.tflite",
+    "sha256": "388b363eb6f72c91d3e082155d4c78a5d13ed0c52c3d498256dd809f3bf6b215",
+    "bytes": 10361199,
+    "url": "https://github.com/ultralytics/yolo-flutter-app/releases/download/v0.6.6/yolo26s-obb_w8a32.tflite"
+  },
+  {
+    "file": "yolo26s-pose_w8a32.tflite",
+    "sha256": "8409d9109f1bb374e28a9ff925205580e62cbcf73528b11777b667f8e28611f8",
+    "bytes": 11071540,
+    "url": "https://github.com/ultralytics/yolo-flutter-app/releases/download/v0.6.6/yolo26s-pose_w8a32.tflite"
+  },
+  {
+    "file": "yolo26s-seg_w8a32.tflite",
+    "sha256": "10a96de13999c12ea82580ba713beaba28301d3d5eb31dd1ba1a77363af62589",
+    "bytes": 11037994,
+    "url": "https://github.com/ultralytics/yolo-flutter-app/releases/download/v0.6.6/yolo26s-seg_w8a32.tflite"
+  },
+  {
+    "file": "yolo26s-sem_w8a32.tflite",
+    "sha256": "8a8277de88317748cdd6192d25049ea9280aeebd4d130e461b0bd785103e5024",
+    "bytes": 6466508,
+    "url": "https://github.com/ultralytics/yolo-flutter-app/releases/download/v0.6.6/yolo26s-sem_w8a32.tflite"
+  },
+  {
+    "file": "yolo26s_w8a32.tflite",
+    "sha256": "7a598838082251ef8e1d3b8f06f356ad532f8fe3a24c7eeeed68b52d28525036",
+    "bytes": 10086787,
+    "url": "https://github.com/ultralytics/yolo-flutter-app/releases/download/v0.6.6/yolo26s_w8a32.tflite"
+  },
+  {
+    "file": "yolo26x-cls_w8a32.tflite",
+    "sha256": "f43d24fa1849f205967460db7f0db5e7b10ea84533f1eb1f551f3998a1e094d0",
+    "bytes": 30158249,
+    "url": "https://github.com/ultralytics/yolo-flutter-app/releases/download/v0.6.6/yolo26x-cls_w8a32.tflite"
+  },
+  {
+    "file": "yolo26x-depth_w8a32.tflite",
+    "sha256": "8fe4e50d7b35095415dd89f88001ca0f3045388775d8d799cea6b74a2633d449",
+    "bytes": 56740494,
+    "url": "https://github.com/ultralytics/yolo-flutter-app/releases/download/v0.6.6/yolo26x-depth_w8a32.tflite"
+  },
+  {
+    "file": "yolo26x-obb_w8a32.tflite",
+    "sha256": "7b4f65d5ba8fa7dac66b08a0195618427519847d8176903bd25a3148df801912",
+    "bytes": 58771727,
+    "url": "https://github.com/ultralytics/yolo-flutter-app/releases/download/v0.6.6/yolo26x-obb_w8a32.tflite"
+  },
+  {
+    "file": "yolo26x-pose_w8a32.tflite",
+    "sha256": "d7d65f12944c67a31f3ed19d5e2c7eb32ef99697ac24ccf5566e15730ffed91c",
+    "bytes": 58874052,
+    "url": "https://github.com/ultralytics/yolo-flutter-app/releases/download/v0.6.6/yolo26x-pose_w8a32.tflite"
+  },
+  {
+    "file": "yolo26x-seg_w8a32.tflite",
+    "sha256": "a99c9f27b40d60e3d1004f473ca7b5a2681407643deccde09c3820f2c8736685",
+    "bytes": 64095578,
+    "url": "https://github.com/ultralytics/yolo-flutter-app/releases/download/v0.6.6/yolo26x-seg_w8a32.tflite"
+  },
+  {
+    "file": "yolo26x-sem_w8a32.tflite",
+    "sha256": "bf01337ba2ea79695cbb04067e23f9f2cce25827c7230632f72ac7ffff4c5912",
+    "bytes": 38165230,
+    "url": "https://github.com/ultralytics/yolo-flutter-app/releases/download/v0.6.6/yolo26x-sem_w8a32.tflite"
+  },
+  {
+    "file": "yolo26x_w8a32.tflite",
+    "sha256": "4cf6291d5b8c763a7e436bbd67f0312daaa8153ad848c43225d8e332b75d2d37",
+    "bytes": 56921540,
+    "url": "https://github.com/ultralytics/yolo-flutter-app/releases/download/v0.6.6/yolo26x_w8a32.tflite"
+  }
+]

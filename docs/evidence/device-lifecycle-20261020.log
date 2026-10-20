@@ -1,0 +1,51 @@
+INSTRUMENTATION_STATUS: class=cn.local.yolovision.RealCameraLifecycleTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+cn.local.yolovision.RealCameraLifecycleTest:
+INSTRUMENTATION_STATUS: test=frontBackCameraPausedRecreationAndBackgroundResume
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: stream=
+YOLO_DEVICE_EVIDENCE camera-capabilities: front-and-back=true; advertisedFacings=[1, 0]
+
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: stream=
+YOLO_DEVICE_EVIDENCE front-camera: PASS selected front lens and received a new real inference
+
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: stream=
+YOLO_DEVICE_EVIDENCE back-camera: PASS selected back lens and received a new real inference
+
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: stream=
+YOLO_DEVICE_EVIDENCE paused-recreation: PASS new activity retained byte-identical JPEG (154145 bytes), remained paused
+
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: stream=
+YOLO_DEVICE_EVIDENCE recreated-resume: PASS explicit resume received a new real inference
+
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: stream=
+YOLO_DEVICE_EVIDENCE background-foreground: PASS CREATED to RESUMED lifecycle transition delivered a new real inference
+
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: stream=
+YOLO_DEVICE_EVIDENCE preferences: restored 7 original keys
+
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=cn.local.yolovision.RealCameraLifecycleTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=frontBackCameraPausedRecreationAndBackgroundResume
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: stream=
+
+Time: 8.671
+
+OK (1 test)
+
+
+INSTRUMENTATION_CODE: -1

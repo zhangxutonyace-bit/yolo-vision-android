@@ -1,0 +1,63 @@
+{
+  "date": "2026-10-20",
+  "device": "HONOR DVD-AN80",
+  "androidApi": 36,
+  "androidVersion": "16",
+  "screen": "1224x2700",
+  "application": "cn.local.yolovision",
+  "version": "0.1.0",
+  "testedApkSha256": "83c2cbd608cbb8418495639c2dfd1696f290239c25c101f0c0717fc91f07151a",
+  "installed": "PASS",
+  "launch": "PASS",
+  "realCamera": "PASS",
+  "pauseResume": "PASS",
+  "settingsPersistence": "PASS",
+  "frontBackSwitch": "PASS",
+  "pausedActivityRecreation": "PASS",
+  "backgroundLifecycleResume": "PASS",
+  "systemSharePreview": "PASS; no external send performed",
+  "instrumentationTests": 4,
+  "bundledModelCpuTests": [
+    {
+      "task": "DETECT",
+      "evidence": "shape=810x1080, speedMs=115.878594, accelerator=CPU, boxes=5, masks=null, semantic=null, depth=null, top1=null, poses=0, obb=0"
+    },
+    {
+      "task": "SEGMENT",
+      "evidence": "shape=810x1080, speedMs=121.695365, accelerator=CPU, boxes=5, masks=5, semantic=null, depth=null, top1=null, poses=0, obb=0"
+    },
+    {
+      "task": "SEMANTIC",
+      "evidence": "shape=810x1080, speedMs=129.412969, accelerator=CPU, boxes=0, masks=null, semantic=480x640, depth=null, top1=null, poses=0, obb=0"
+    },
+    {
+      "task": "DEPTH",
+      "evidence": "shape=810x1080, speedMs=161.654114, accelerator=CPU, boxes=0, masks=null, semantic=null, depth=640x640, top1=null, poses=0, obb=0"
+    },
+    {
+      "task": "CLASSIFY",
+      "evidence": "shape=810x1080, speedMs=7.524219, accelerator=CPU, boxes=0, masks=null, semantic=null, depth=null, top1=minibus, poses=0, obb=0"
+    },
+    {
+      "task": "POSE",
+      "evidence": "shape=810x1080, speedMs=97.581823, accelerator=CPU, boxes=4, masks=null, semantic=null, depth=null, top1=null, poses=4, obb=0"
+    },
+    {
+      "task": "OBB",
+      "evidence": "shape=810x1080, speedMs=77.660416, accelerator=CPU, boxes=0, masks=null, semantic=null, depth=null, top1=null, poses=0, obb=0"
+    }
+  ],
+  "screenshotUi": "No blocking clipping observed in inspected portrait screens",
+  "performance": {
+    "singleObservedFps": 24.9,
+    "singleObservedFrameMs": 35,
+    "sustainedBenchmark": false
+  },
+  "limitations": [
+    "Yellow irregular object misclassified as cake/scissors.",
+    "Live camera inference accelerator not confirmed; hardware preference alone is not GPU proof.",
+    "No long-duration heat, battery, permission-denial, actual landscape-layout or broader-device validation.",
+    "Seven models ran on a fixture; live visual checks cover detection, instance segmentation and depth.",
+    "Relative-depth precision and aerial rotated-box accuracy were not validated against ground truth."
+  ]
+}

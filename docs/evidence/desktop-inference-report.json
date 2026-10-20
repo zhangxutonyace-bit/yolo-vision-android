@@ -1,0 +1,394 @@
+{
+  "evidence_level": "Real desktop CPU inference; not Android or camera acceptance",
+  "runtime": "ai-edge-litert 2.3.0 Interpreter",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.10",
+  "input_image": "bus.jpg",
+  "input_image_sha256": "c02019c4979c191eb739ddd944445ef408dad5679acab6fd520ef9d434bfbc63",
+  "input_image_dimensions": [
+    810,
+    1080
+  ],
+  "limitations": [
+    "No Android phone or emulator was used in this check.",
+    "PIL preprocessing approximates the documented Android geometry; this is not pixel parity proof.",
+    "Timing is a single desktop CPU invocation and must not be presented as Android performance.",
+    "Raw class scores precede NMS; semantic/depth output validity does not prove real-world accuracy."
+  ],
+  "models": [
+    {
+      "id": "yolo26n-cls",
+      "model_sha256": "0e39b06acd73645d71374a5ea8468ee9cd90a72f89df18fd11a4f97248a573ea",
+      "status": "PASS",
+      "input_shape": [
+        1,
+        3,
+        224,
+        224
+      ],
+      "input_layout": "NCHW",
+      "preprocessing": "center crop, RGB, float32 / 255",
+      "output_tensors": [
+        {
+          "shape": [
+            1,
+            1000
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "minimum": 1.0038897491071452e-10,
+          "maximum": 0.6116027235984802
+        }
+      ],
+      "single_cpu_invoke_ms_not_benchmark": 5.55,
+      "top5": [
+        {
+          "id": 654,
+          "label": "minibus",
+          "score": 0.6116027235984802
+        },
+        {
+          "id": 734,
+          "label": "police_van",
+          "score": 0.24455885589122772
+        },
+        {
+          "id": 874,
+          "label": "trolleybus",
+          "score": 0.12580324709415436
+        },
+        {
+          "id": 656,
+          "label": "minivan",
+          "score": 0.005627382546663284
+        },
+        {
+          "id": 408,
+          "label": "amphibian",
+          "score": 0.002802340779453516
+        }
+      ]
+    },
+    {
+      "id": "yolo26n-depth",
+      "model_sha256": "8c7f242c2a8c339c6721863e103e17e026cbd784c9a3d031a8e902660c364311",
+      "status": "PASS",
+      "input_shape": [
+        1,
+        3,
+        640,
+        640
+      ],
+      "input_layout": "NCHW",
+      "preprocessing": "stretch, RGB, float32 / 255",
+      "output_tensors": [
+        {
+          "shape": [
+            1,
+            1,
+            640,
+            640
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "minimum": 2.3599812984466553,
+          "maximum": 18.90952491760254
+        }
+      ],
+      "single_cpu_invoke_ms_not_benchmark": 67.88,
+      "depth_has_variation": true
+    },
+    {
+      "id": "yolo26n-obb",
+      "model_sha256": "259b8b41e290f9431eae816e86b33422a53eac490a8ea2715f70d6da798ba5d3",
+      "status": "PASS",
+      "input_shape": [
+        1,
+        3,
+        640,
+        640
+      ],
+      "input_layout": "NCHW",
+      "preprocessing": "letterbox black padding, RGB, float32 / 255",
+      "output_tensors": [
+        {
+          "shape": [
+            1,
+            20,
+            8400
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "minimum": -0.5418496131896973,
+          "maximum": 0.9958616495132446
+        }
+      ],
+      "single_cpu_invoke_ms_not_benchmark": 79.78,
+      "best_raw_anchor_by_class": [
+        {
+          "id": 10,
+          "label": "small vehicle",
+          "score": 0.006735361181199551
+        },
+        {
+          "id": 14,
+          "label": "swimming pool",
+          "score": 0.002824335591867566
+        },
+        {
+          "id": 9,
+          "label": "large vehicle",
+          "score": 0.0015037183184176683
+        },
+        {
+          "id": 8,
+          "label": "bridge",
+          "score": 0.0007707564509473741
+        },
+        {
+          "id": 1,
+          "label": "ship",
+          "score": 0.0005111636128276587
+        }
+      ],
+      "raw_anchor_count_above_0_25_before_nms": 0
+    },
+    {
+      "id": "yolo26n-pose",
+      "model_sha256": "50ff5869a7f77db2890eb4b23f00d678e9a77cdea899100712218c2c3a91dbc7",
+      "status": "PASS",
+      "input_shape": [
+        1,
+        3,
+        640,
+        640
+      ],
+      "input_layout": "NCHW",
+      "preprocessing": "letterbox black padding, RGB, float32 / 255",
+      "output_tensors": [
+        {
+          "shape": [
+            1,
+            56,
+            8400
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "minimum": -0.008848825469613075,
+          "maximum": 1.3104952573776245
+        }
+      ],
+      "single_cpu_invoke_ms_not_benchmark": 121.39,
+      "best_raw_anchor_by_class": [
+        {
+          "id": 0,
+          "label": "person",
+          "score": 0.8529435992240906
+        }
+      ],
+      "raw_anchor_count_above_0_25_before_nms": 33
+    },
+    {
+      "id": "yolo26n-seg",
+      "model_sha256": "3a9d800e59071e32516511bd788bf73a229e8b62c09eed96d6789894bc238acf",
+      "status": "PASS",
+      "input_shape": [
+        1,
+        3,
+        640,
+        640
+      ],
+      "input_layout": "NCHW",
+      "preprocessing": "letterbox black padding, RGB, float32 / 255",
+      "output_tensors": [
+        {
+          "shape": [
+            1,
+            116,
+            8400
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "minimum": -6.685133934020996,
+          "maximum": 4.502096652984619
+        },
+        {
+          "shape": [
+            1,
+            32,
+            160,
+            160
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "minimum": -0.27846455574035645,
+          "maximum": 3.587766170501709
+        }
+      ],
+      "single_cpu_invoke_ms_not_benchmark": 125.63,
+      "best_raw_anchor_by_class": [
+        {
+          "id": 5,
+          "label": "bus",
+          "score": 0.8806581497192383
+        },
+        {
+          "id": 0,
+          "label": "person",
+          "score": 0.8444633483886719
+        },
+        {
+          "id": 26,
+          "label": "handbag",
+          "score": 0.1787330061197281
+        },
+        {
+          "id": 36,
+          "label": "skateboard",
+          "score": 0.12873326241970062
+        },
+        {
+          "id": 11,
+          "label": "stop sign",
+          "score": 0.032472431659698486
+        }
+      ],
+      "raw_anchor_count_above_0_25_before_nms": 46
+    },
+    {
+      "id": "yolo26n-sem",
+      "model_sha256": "d29dee0289f29be7e1446095e843109cdff7bdddba9bfd2ffd525425fbc5f557",
+      "status": "PASS",
+      "input_shape": [
+        1,
+        3,
+        640,
+        640
+      ],
+      "input_layout": "NCHW",
+      "preprocessing": "letterbox black padding, RGB, float32 / 255",
+      "output_tensors": [
+        {
+          "shape": [
+            1,
+            19,
+            640,
+            640
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "minimum": -17.731657028198242,
+          "maximum": 20.76577377319336
+        }
+      ],
+      "single_cpu_invoke_ms_not_benchmark": 40.55,
+      "classes_present": [
+        {
+          "id": 0,
+          "label": "road",
+          "pixels": 83314
+        },
+        {
+          "id": 1,
+          "label": "sidewalk",
+          "pixels": 11847
+        },
+        {
+          "id": 2,
+          "label": "building",
+          "pixels": 158411
+        },
+        {
+          "id": 5,
+          "label": "pole",
+          "pixels": 388
+        },
+        {
+          "id": 7,
+          "label": "traffic sign",
+          "pixels": 1986
+        },
+        {
+          "id": 8,
+          "label": "vegetation",
+          "pixels": 14418
+        },
+        {
+          "id": 11,
+          "label": "person",
+          "pixels": 46730
+        },
+        {
+          "id": 13,
+          "label": "car",
+          "pixels": 1429
+        },
+        {
+          "id": 15,
+          "label": "bus",
+          "pixels": 90929
+        },
+        {
+          "id": 18,
+          "label": "bicycle",
+          "pixels": 148
+        }
+      ]
+    },
+    {
+      "id": "yolo26n",
+      "model_sha256": "d9cef07ce652ccfa9ce58e4ac8a4df98ff037739a9dad20a8afcae21b545df73",
+      "status": "PASS",
+      "input_shape": [
+        1,
+        3,
+        640,
+        640
+      ],
+      "input_layout": "NCHW",
+      "preprocessing": "letterbox black padding, RGB, float32 / 255",
+      "output_tensors": [
+        {
+          "shape": [
+            1,
+            84,
+            8400
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "minimum": 1.3511217080102824e-28,
+          "maximum": 1.0366772413253784
+        }
+      ],
+      "single_cpu_invoke_ms_not_benchmark": 117.76,
+      "best_raw_anchor_by_class": [
+        {
+          "id": 5,
+          "label": "bus",
+          "score": 0.9022235870361328
+        },
+        {
+          "id": 0,
+          "label": "person",
+          "score": 0.8485908508300781
+        },
+        {
+          "id": 26,
+          "label": "handbag",
+          "score": 0.13239361345767975
+        },
+        {
+          "id": 58,
+          "label": "potted plant",
+          "score": 0.04039764031767845
+        },
+        {
+          "id": 11,
+          "label": "stop sign",
+          "score": 0.03354369476437569
+        }
+      ],
+      "raw_anchor_count_above_0_25_before_nms": 45
+    }
+  ]
+}

@@ -1,0 +1,214 @@
+{
+  "date": "2026-10-20",
+  "application": "YOLO 视觉",
+  "version": "0.1.0",
+  "package": "cn.local.yolovision",
+  "apk": {
+    "file": "YOLO-Vision-0.1.0-android.apk",
+    "bytes": 52594869,
+    "sha256": "83c2cbd608cbb8418495639c2dfd1696f290239c25c101f0c0717fc91f07151a",
+    "signatureVerified": true,
+    "signing": "Android development test certificate",
+    "zip16kPageAlignmentVerified": true,
+    "supportedAbis": [
+      "arm64-v8a",
+      "armeabi-v7a",
+      "x86_64"
+    ],
+    "minSdk": 26,
+    "targetSdk": 35,
+    "permissions": [
+      "android.permission.CAMERA",
+      "android.permission.INTERNET",
+      "cn.local.yolovision.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+    ]
+  },
+  "build": {
+    "debug": "PASS",
+    "release": "PASS",
+    "instrumentationApkCompilation": "PASS",
+    "latestBuildWasOffline": true
+  },
+  "unitTests": {
+    "total": 14.0,
+    "passed": 14.0,
+    "suites": [
+      {
+        "name": "cn.local.yolovision.VisionContractTest",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "cases": [
+          "allTasksResolveToDistinctPinnedOfficialAssets",
+          "modelIntegrityRejectsTruncatedOrModifiedData",
+          "irrelevantNmsControlsAreDisabledForDenseTasksAndClassification",
+          "invalidPersistedSettingsCannotProduceInvalidThresholds",
+          "arbitraryModelPathsAreRejected"
+        ]
+      },
+      {
+        "name": "com.ultralytics.yolo.ChineseLabelsTest",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "cases": [
+          "commonLabelsAreTranslatedWithoutChangingClassifierLabels",
+          "confidenceOnlyAppearsWhenEnabled"
+        ]
+      },
+      {
+        "name": "com.ultralytics.yolo.DepthColorizerTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "cases": [
+          "constantDepthUsesFirstColorWithoutDividingByZero",
+          "invalidDepthsAreTransparentAndFinitePositiveRangeIsUsed",
+          "completelyInvalidMapReturnsNoRange"
+        ]
+      },
+      {
+        "name": "com.ultralytics.yolo.DetectionPostprocessorTest",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "cases": [
+          "iouUsesStrictComparison",
+          "strictConfidenceAndCoordinatesArePreserved",
+          "nmsMatchesUpstreamClassAgnosticBehaviorAndCapsCount",
+          "malformedTensorFailsBeforeReadingOutsideBuffer"
+        ]
+      }
+    ]
+  },
+  "lint": {
+    "errors": 0,
+    "warnings": 21,
+    "warningIds": [
+      "AndroidGradlePluginVersion",
+      "GradleDependency",
+      "ExportedContentProvider",
+      "DrawAllocation",
+      "ViewConstructor",
+      "UseKtx",
+      "SetTextI18n"
+    ]
+  },
+  "bundledModels": [
+    {
+      "file": "yolo26n-cls_w8a32.tflite",
+      "bytes": 2985143,
+      "sha256": "0e39b06acd73645d71374a5ea8468ee9cd90a72f89df18fd11a4f97248a573ea",
+      "verified": true
+    },
+    {
+      "file": "yolo26n-depth_w8a32.tflite",
+      "bytes": 5474749,
+      "sha256": "8c7f242c2a8c339c6721863e103e17e026cbd784c9a3d031a8e902660c364311",
+      "verified": true
+    },
+    {
+      "file": "yolo26n-obb_w8a32.tflite",
+      "bytes": 2926110,
+      "sha256": "259b8b41e290f9431eae816e86b33422a53eac490a8ea2715f70d6da798ba5d3",
+      "verified": true
+    },
+    {
+      "file": "yolo26n-pose_w8a32.tflite",
+      "bytes": 3512325,
+      "sha256": "50ff5869a7f77db2890eb4b23f00d678e9a77cdea899100712218c2c3a91dbc7",
+      "verified": true
+    },
+    {
+      "file": "yolo26n-seg_w8a32.tflite",
+      "bytes": 3234566,
+      "sha256": "3a9d800e59071e32516511bd788bf73a229e8b62c09eed96d6789894bc238acf",
+      "verified": true
+    },
+    {
+      "file": "yolo26n-sem_w8a32.tflite",
+      "bytes": 1748412,
+      "sha256": "d29dee0289f29be7e1446095e843109cdff7bdddba9bfd2ffd525425fbc5f557",
+      "verified": true
+    },
+    {
+      "file": "yolo26n_w8a32.tflite",
+      "bytes": 2875553,
+      "sha256": "d9cef07ce652ccfa9ce58e4ac8a4df98ff037739a9dad20a8afcae21b545df73",
+      "verified": true
+    }
+  ],
+  "desktopInference": {
+    "models": 7,
+    "passed": 7,
+    "evidence": "desktop-inference-report.json",
+    "androidProof": false
+  },
+  "androidDevice": {
+    "date": "2026-10-20",
+    "device": "HONOR DVD-AN80",
+    "androidApi": 36,
+    "androidVersion": "16",
+    "screen": "1224x2700",
+    "application": "cn.local.yolovision",
+    "version": "0.1.0",
+    "testedApkSha256": "83c2cbd608cbb8418495639c2dfd1696f290239c25c101f0c0717fc91f07151a",
+    "installed": "PASS",
+    "launch": "PASS",
+    "realCamera": "PASS",
+    "pauseResume": "PASS",
+    "settingsPersistence": "PASS",
+    "frontBackSwitch": "PASS",
+    "pausedActivityRecreation": "PASS",
+    "backgroundLifecycleResume": "PASS",
+    "systemSharePreview": "PASS; no external send performed",
+    "instrumentationTests": 4,
+    "bundledModelCpuTests": [
+      {
+        "task": "DETECT",
+        "evidence": "shape=810x1080, speedMs=115.878594, accelerator=CPU, boxes=5, masks=null, semantic=null, depth=null, top1=null, poses=0, obb=0"
+      },
+      {
+        "task": "SEGMENT",
+        "evidence": "shape=810x1080, speedMs=121.695365, accelerator=CPU, boxes=5, masks=5, semantic=null, depth=null, top1=null, poses=0, obb=0"
+      },
+      {
+        "task": "SEMANTIC",
+        "evidence": "shape=810x1080, speedMs=129.412969, accelerator=CPU, boxes=0, masks=null, semantic=480x640, depth=null, top1=null, poses=0, obb=0"
+      },
+      {
+        "task": "DEPTH",
+        "evidence": "shape=810x1080, speedMs=161.654114, accelerator=CPU, boxes=0, masks=null, semantic=null, depth=640x640, top1=null, poses=0, obb=0"
+      },
+      {
+        "task": "CLASSIFY",
+        "evidence": "shape=810x1080, speedMs=7.524219, accelerator=CPU, boxes=0, masks=null, semantic=null, depth=null, top1=minibus, poses=0, obb=0"
+      },
+      {
+        "task": "POSE",
+        "evidence": "shape=810x1080, speedMs=97.581823, accelerator=CPU, boxes=4, masks=null, semantic=null, depth=null, top1=null, poses=4, obb=0"
+      },
+      {
+        "task": "OBB",
+        "evidence": "shape=810x1080, speedMs=77.660416, accelerator=CPU, boxes=0, masks=null, semantic=null, depth=null, top1=null, poses=0, obb=0"
+      }
+    ],
+    "screenshotUi": "No blocking clipping observed in inspected portrait screens",
+    "performance": {
+      "singleObservedFps": 24.9,
+      "singleObservedFrameMs": 35,
+      "sustainedBenchmark": false
+    },
+    "limitations": [
+      "Yellow irregular object misclassified as cake/scissors.",
+      "Live camera inference accelerator not confirmed; hardware preference alone is not GPU proof.",
+      "No long-duration heat, battery, permission-denial, actual landscape-layout or broader-device validation.",
+      "Seven models ran on a fixture; live visual checks cover detection, instance segmentation and depth.",
+      "Relative-depth precision and aerial rotated-box accuracy were not validated against ground truth."
+    ]
+  }
+}

@@ -1,0 +1,133 @@
+INSTRUMENTATION_STATUS: class=cn.local.yolovision.OnDeviceModelTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+cn.local.yolovision.OnDeviceModelTest:
+INSTRUMENTATION_STATUS: test=sevenBundledModelsLoadAndInferOnAndroid
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: stream=
+YOLO_DEVICE_EVIDENCE model-DETECT: START bundled nano / actual Android CPU / official bus fixture
+
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: stream=
+YOLO_DEVICE_EVIDENCE model-DETECT: PASS shape=810x1080, speedMs=115.878594, accelerator=CPU, boxes=5, masks=null, semantic=null, depth=null, top1=null, poses=0, obb=0
+
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: stream=
+YOLO_DEVICE_EVIDENCE model-SEGMENT: START bundled nano / actual Android CPU / official bus fixture
+
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: stream=
+YOLO_DEVICE_EVIDENCE model-SEGMENT: PASS shape=810x1080, speedMs=121.695365, accelerator=CPU, boxes=5, masks=5, semantic=null, depth=null, top1=null, poses=0, obb=0
+
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: stream=
+YOLO_DEVICE_EVIDENCE model-SEMANTIC: START bundled nano / actual Android CPU / official bus fixture
+
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: stream=
+YOLO_DEVICE_EVIDENCE model-SEMANTIC: PASS shape=810x1080, speedMs=129.412969, accelerator=CPU, boxes=0, masks=null, semantic=480x640, depth=null, top1=null, poses=0, obb=0
+
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: stream=
+YOLO_DEVICE_EVIDENCE model-DEPTH: START bundled nano / actual Android CPU / official bus fixture
+
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: stream=
+YOLO_DEVICE_EVIDENCE model-DEPTH: PASS shape=810x1080, speedMs=161.654114, accelerator=CPU, boxes=0, masks=null, semantic=null, depth=640x640, top1=null, poses=0, obb=0
+
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: stream=
+YOLO_DEVICE_EVIDENCE model-CLASSIFY: START bundled nano / actual Android CPU / official bus fixture
+
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: stream=
+YOLO_DEVICE_EVIDENCE model-CLASSIFY: PASS shape=810x1080, speedMs=7.524219, accelerator=CPU, boxes=0, masks=null, semantic=null, depth=null, top1=minibus, poses=0, obb=0
+
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: stream=
+YOLO_DEVICE_EVIDENCE model-POSE: START bundled nano / actual Android CPU / official bus fixture
+
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: stream=
+YOLO_DEVICE_EVIDENCE model-POSE: PASS shape=810x1080, speedMs=97.581823, accelerator=CPU, boxes=4, masks=null, semantic=null, depth=null, top1=null, poses=4, obb=0
+
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: stream=
+YOLO_DEVICE_EVIDENCE model-OBB: START bundled nano / actual Android CPU / official bus fixture
+
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: stream=
+YOLO_DEVICE_EVIDENCE model-OBB: PASS shape=810x1080, speedMs=77.660416, accelerator=CPU, boxes=0, masks=null, semantic=null, depth=null, top1=null, poses=0, obb=0
+
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=cn.local.yolovision.OnDeviceModelTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=sevenBundledModelsLoadAndInferOnAndroid
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=cn.local.yolovision.RealCameraSmokeTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+cn.local.yolovision.RealCameraSmokeTest:
+INSTRUMENTATION_STATUS: test=realCameraInfersPausesAndResumesWithNewFrames
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: stream=
+YOLO_DEVICE_EVIDENCE real-camera: PASS shape=480x640, boxes=1, labels=[scissors], speedMs=343.096718, accelerator=null
+
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: stream=
+YOLO_DEVICE_EVIDENCE pause: PASS real JPEG 1224x1810, bytes=160264
+
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: stream=
+YOLO_DEVICE_EVIDENCE resume: PASS new real camera inference received
+
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: stream=
+YOLO_DEVICE_EVIDENCE preferences: restored 7 original keys
+
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=cn.local.yolovision.RealCameraSmokeTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=realCameraInfersPausesAndResumesWithNewFrames
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=cn.local.yolovision.SettingsFlowTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+cn.local.yolovision.SettingsFlowTest:
+INSTRUMENTATION_STATUS: test=settingPersistsAfterActivityRecreation
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: stream=
+YOLO_DEVICE_EVIDENCE settings: confidence toggle persisted after activity recreation
+
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: stream=
+YOLO_DEVICE_EVIDENCE preferences: restored 7 original keys
+
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=cn.local.yolovision.SettingsFlowTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=settingPersistsAfterActivityRecreation
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: stream=
+
+Time: 9.794
+
+OK (3 tests)
+
+
+INSTRUMENTATION_CODE: -1

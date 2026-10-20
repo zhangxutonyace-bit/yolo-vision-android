@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Base.Theme.YoloVision" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">#1565FF</item>
+        <item name="colorPrimaryVariant">#0D47D1</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorSecondary">#17BDC5</item>
+        <item name="android:fontFamily">sans</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:statusBarColor">#FFFFFF</item>
+        <item name="android:navigationBarColor">#16233C</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="android:windowBackground">#FFFFFF</item>
+    </style>
+    <style name="Theme.YoloVision" parent="Base.Theme.YoloVision" />
+</resources>

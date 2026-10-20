@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- LiteRT also ships optional AI Pack download support. This app only loads
+         local models and uses its own user-initiated download, so it needs none
+         of AI Pack / WorkManager's background scheduling permissions. -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" tools:node="remove" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" tools:node="remove" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" tools:node="remove" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" tools:node="remove" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" tools:node="remove" />
+    <uses-feature android:name="android.hardware.camera.any" android:required="false" />
+    <application
+        android:allowBackup="false"
+        android:fullBackupContent="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:label="YOLO 视觉"
+        android:icon="@drawable/ic_launcher"
+        android:theme="@style/Theme.YoloVision"
+        android:supportsRtl="true"
+        android:usesCleartextTraffic="false">
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            tools:node="merge">
+            <meta-data android:name="androidx.work.WorkManagerInitializer" tools:node="remove" />
+        </provider>
+        <!-- These entries delete runtime-only transitive components. MissingClass
+             is irrelevant for a node that must not appear in the merged APK. -->
+        <service android:name="androidx.work.impl.background.systemalarm.SystemAlarmService" tools:node="remove" tools:ignore="MissingClass" />
+        <service android:name="androidx.work.impl.background.systemjob.SystemJobService" tools:node="remove" tools:ignore="MissingClass" />
+        <service android:name="androidx.work.impl.foreground.SystemForegroundService" tools:node="remove" tools:ignore="MissingClass" />
+        <service android:name="com.google.android.play.core.assetpacks.AssetPackExtractionService" tools:node="remove" tools:ignore="MissingClass" />
+        <service android:name="com.google.android.play.core.assetpacks.ExtractionForegroundService" tools:node="remove" tools:ignore="MissingClass" />
+        <receiver android:name="com.google.android.play.core.assetpacks.SessionStateBroadcastReceiver" tools:node="remove" tools:ignore="MissingClass" />
+        <receiver android:name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver" tools:node="remove" tools:ignore="MissingClass" />
+        <receiver android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy" tools:node="remove" tools:ignore="MissingClass" />
+        <receiver android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy" tools:node="remove" tools:ignore="MissingClass" />
+        <receiver android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy" tools:node="remove" tools:ignore="MissingClass" />
+        <receiver android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy" tools:node="remove" tools:ignore="MissingClass" />
+        <receiver android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver" tools:node="remove" tools:ignore="MissingClass" />
+        <receiver android:name="androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver" tools:node="remove" tools:ignore="MissingClass" />
+        <receiver android:name="androidx.work.impl.diagnostics.DiagnosticsReceiver" tools:node="remove" tools:ignore="MissingClass" />
+        <activity android:name=".MainActivity" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.files"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/shared_paths" />
+        </provider>
+    </application>
+</manifest>
