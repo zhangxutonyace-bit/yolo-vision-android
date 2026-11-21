@@ -3,90 +3,91 @@ package cn.local.yolovision
 import android.content.Context
 import java.io.File
 import java.io.IOException
-import java.net.HttpURLConnection
-import java.net.URL
+import java.io.InputStream
+import java.io.OutputStream
 import java.security.MessageDigest
 import java.util.concurrent.CancellationException
 import java.util.concurrent.atomic.AtomicBoolean
 import org.json.JSONArray
 
-/** Model downloads never include camera data; all inference remains on device. */
+/** Resolves verified bundled models without any network access. */
 class ModelStore(private val context: Context) {
     private val directory = File(context.filesDir, "models").apply { mkdirs() }
     private val cancelled = AtomicBoolean(false)
-    @Volatile private var connection: HttpURLConnection? = null
     private val manifest by lazy {
-        val json = context.assets.open("models/download-manifest.json").bufferedReader().use { it.readText() }.removePrefix("\uFEFF")
-        val array = JSONArray(json)
-        (0 until array.length()).associate { index ->
-            val entry = array.getJSONObject(index)
-            entry.getString("file") to (entry.getString("sha256") to entry.getLong("bytes"))
+        try {
+            val json = context.assets.open("models/download-manifest.json").bufferedReader().use { it.readText() }.removePrefix("\uFEFF")
+            val array = JSONArray(json)
+            (0 until array.length()).associate { index ->
+                val entry = array.getJSONObject(index)
+                entry.getString("file") to (entry.getString("sha256") to entry.getLong("bytes"))
+            }
+        } catch (error: Exception) {
+            throw IOException("内置模型清单无法读取，请重新安装应用", error)
         }
     }
 
-    fun available(task: VisionTask, size: String): Boolean = size == "n" || valid(File(directory, task.fileName(size)))
+    @Suppress("UNUSED_PARAMETER")
+    fun available(task: VisionTask, size: String): Boolean = size in VisionTask.MODEL_SIZES
     fun expectedSize(task: VisionTask, size: String): Long = manifest[task.fileName(size)]?.second ?: 0L
     fun beginRequest() { cancelled.set(false) }
 
     fun resolve(task: VisionTask, size: String, progress: (Long, Long) -> Unit): String {
-        if (cancelled.get()) throw CancellationException()
+        checkActive(cancelled::get)
         val target = File(directory, task.fileName(size))
-        val expected = manifest[task.fileName(size)] ?: throw IOException("模型不在已验证的下载清单中")
-        if (verified(target, expected.first, expected.second)) return target.absolutePath
+        val expected = manifest[task.fileName(size)] ?: throw IOException("内置模型清单缺失，请重新安装应用")
+        if (verified(target, expected.first, expected.second)) {
+            checkActive(cancelled::get)
+            return target.absolutePath
+        }
         val temporary = File(directory, "${task.fileName(size)}.part")
         try {
-            if (size == "n") {
-                context.assets.open("models/${task.fileName(size)}").use { input ->
-                    temporary.outputStream().use { output -> input.copyTo(output) }
-                }
-            } else {
-                val request = URL(task.modelUrl(size)).openConnection() as HttpURLConnection
-                connection = request
-                request.connectTimeout = 20_000
-                request.readTimeout = 30_000
-                request.instanceFollowRedirects = true
-                if (request.responseCode !in 200..299) throw IOException("服务器返回 ${request.responseCode}")
-                val total = request.contentLengthLong
-                if (total > MAX_BYTES) throw IOException("模型文件超过下载大小限制")
-                request.inputStream.use { input ->
-                    temporary.outputStream().use { output ->
-                        val buffer = ByteArray(64 * 1024)
-                        var received = 0L
-                        while (true) {
-                            if (cancelled.get() || Thread.currentThread().isInterrupted) throw CancellationException()
-                            val count = input.read(buffer)
-                            if (count < 0) break
-                            received += count
-                            if (received > MAX_BYTES) throw IOException("模型文件超过下载大小限制")
-                            output.write(buffer, 0, count)
-                            progress(received, total)
-                        }
-                        if (total > 0 && received != total) throw IOException("模型下载不完整，请重试")
-                    }
+            context.assets.open("models/${task.fileName(size)}").use { input ->
+                temporary.outputStream().use { output ->
+                    copyAsset(input, output, expected.second, cancelled::get, progress)
                 }
             }
-            if (cancelled.get()) throw CancellationException()
-            if (!verified(temporary, expected.first, expected.second)) throw IOException("模型完整性校验失败，请重新下载")
+            checkActive(cancelled::get)
+            if (!verified(temporary, expected.first, expected.second)) throw IOException("内置模型完整性校验失败，请重新安装应用")
+            checkActive(cancelled::get)
             if (target.exists() && !target.delete()) throw IOException("无法替换损坏的模型文件")
             if (!temporary.renameTo(target)) throw IOException("无法保存模型文件")
             return target.absolutePath
         } catch (error: IOException) {
-            if (cancelled.get()) throw CancellationException("已取消模型下载")
-            throw error
+            checkActive(cancelled::get)
+            throw IOException("无法准备内置模型，请检查可用空间；如仍失败，请重新安装应用", error)
         } finally {
-            connection?.disconnect()
-            connection = null
             temporary.delete()
         }
     }
 
     fun cancel() {
         cancelled.set(true)
-        connection?.disconnect()
     }
 
     companion object {
-        const val MAX_BYTES = 512L * 1024 * 1024
+        private fun checkActive(isCancelled: () -> Boolean) {
+            if (isCancelled() || Thread.currentThread().isInterrupted) throw CancellationException("已取消模型准备")
+        }
+
+        internal fun copyAsset(input: InputStream, output: OutputStream, expectedBytes: Long,
+                               isCancelled: () -> Boolean, progress: (Long, Long) -> Unit) {
+            val buffer = ByteArray(64 * 1024)
+            var copied = 0L
+            while (true) {
+                checkActive(isCancelled)
+                val count = input.read(buffer)
+                if (count < 0) break
+                checkActive(isCancelled)
+                copied += count
+                if (copied > expectedBytes) throw IOException("内置模型大小异常，请重新安装应用")
+                output.write(buffer, 0, count)
+                progress(copied, expectedBytes)
+            }
+            checkActive(isCancelled)
+            if (copied != expectedBytes) throw IOException("内置模型不完整，请重新安装应用")
+        }
+
         fun verified(file: File, expectedHash: String, expectedBytes: Long): Boolean {
             if (!valid(file) || file.length() != expectedBytes) return false
             val digest = MessageDigest.getInstance("SHA-256")

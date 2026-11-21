@@ -9,17 +9,34 @@ android {
         applicationId = "cn.local.yolovision"
         minSdk = 26
         targetSdk = 35
-        versionCode = 1
-        versionName = "0.1.0"
+        versionCode = 6
+        versionName = "0.1.5"
         // LiteRT has no 32-bit x86 runtime; do not advertise that unsupported ABI.
         ndk { abiFilters += setOf("arm64-v8a", "armeabi-v7a", "x86_64") }
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
+    val signingEnvironmentNames = listOf(
+        "YOLO_SIGNING_STORE_FILE", "YOLO_SIGNING_STORE_PASSWORD",
+        "YOLO_SIGNING_KEY_ALIAS", "YOLO_SIGNING_KEY_PASSWORD"
+    )
+    val signingEnvironment = signingEnvironmentNames.map { providers.environmentVariable(it).orNull }
+    require(signingEnvironment.all { it == null } || signingEnvironment.all { !it.isNullOrBlank() }) {
+        "Set all four YOLO_SIGNING_* environment values, or leave all unset for an unsigned release."
+    }
+    val companyReleaseSigner = if (signingEnvironment.all { !it.isNullOrBlank() }) {
+        signingConfigs.create("companyRelease") {
+            storeFile = file(signingEnvironment[0]!!)
+            require(storeFile!!.isFile) { "The configured company release keystore does not exist." }
+            storePassword = signingEnvironment[1]
+            keyAlias = signingEnvironment[2]
+            keyPassword = signingEnvironment[3]
+        }
+    } else null
     buildTypes {
         release {
             isMinifyEnabled = false
-            // The distributed first build is explicitly a test APK, using the standard debug signer.
-            signingConfig = signingConfigs.getByName("debug")
+            // Company signing is explicit. Never fall back to a test signer for store releases.
+            signingConfig = companyReleaseSigner
         }
     }
     compileOptions {

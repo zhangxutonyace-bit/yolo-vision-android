@@ -11,14 +11,20 @@ import org.junit.Assert.assertTrue
 
 /** Test-only helpers. Never leave the person's task, model or display preferences changed. */
 internal object DeviceTestSupport {
-    fun <T> preservingPreferences(block: (SharedPreferences) -> T): T {
+    fun <T> preservingPreferences(acceptPrivacy: Boolean = true, block: (SharedPreferences) -> T): T {
         val instrumentation = InstrumentationRegistry.getInstrumentation()
         val context = instrumentation.targetContext
         val preferences = context.getSharedPreferences("vision", 0)
         val original = preferences.all.mapValues { (_, value) ->
             if (value is Set<*>) value.toSet() else value
         }
+        val privacy = context.getSharedPreferences(PrivacyPolicy.PREFERENCES_NAME, 0)
+        val originalPrivacy = privacy.all.mapValues { (_, value) ->
+            if (value is Set<*>) value.toSet() else value
+        }
         try {
+            if (acceptPrivacy) check(privacy.edit()
+                .putString(PrivacyPolicy.CONSENT_KEY, PrivacyPolicy.VERSION).commit())
             return block(preferences)
         } finally {
             val editor = preferences.edit().clear()
@@ -36,6 +42,21 @@ internal object DeviceTestSupport {
             }
             check(editor.commit()) { "Could not restore original vision preferences" }
             check(preferences.all == original) { "Restored preferences differ from their original values" }
+            val privacyEditor = privacy.edit().clear()
+            originalPrivacy.forEach { (key, value) ->
+                when (value) {
+                    is Boolean -> privacyEditor.putBoolean(key, value)
+                    is Float -> privacyEditor.putFloat(key, value)
+                    is Int -> privacyEditor.putInt(key, value)
+                    is Long -> privacyEditor.putLong(key, value)
+                    is String -> privacyEditor.putString(key, value)
+                    is Set<*> -> privacyEditor.putStringSet(key, value.map { it as String }.toSet())
+                    null -> Unit
+                    else -> error("Unsupported privacy preference type: ${value.javaClass.name}")
+                }
+            }
+            check(privacyEditor.commit()) { "Could not restore original privacy preferences" }
+            check(privacy.all == originalPrivacy) { "Restored privacy preferences differ from their original values" }
             evidence("preferences", "restored ${original.size} original keys")
             // The scenario inside block has been closed before this finally runs.
             // Recreate the visible app from the restored preferences, even after a failed assertion.

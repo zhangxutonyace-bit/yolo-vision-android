@@ -26,6 +26,7 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
 import android.util.SizeF
 import kotlin.math.abs
+import kotlin.math.hypot
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.DefaultLifecycleObserver
@@ -298,6 +299,7 @@ class YOLOView @JvmOverloads constructor(
     private var numItemsThreshold = 30
     private var showOverlays = true
     private var showConfidence = false
+    private var funEffect: FunEffectOverlayStyle? = null
     private lateinit var zoomLabel: TextView
     private lateinit var cameraButton: TextView
     private lateinit var confidenceLabel: TextView
@@ -436,6 +438,12 @@ class YOLOView @JvmOverloads constructor(
     /** Change display only; confidence filtering and original model metadata stay unchanged. */
     fun setShowConfidence(show: Boolean) {
         showConfidence = show
+        overlayView.invalidate()
+    }
+
+    /** Update the target effect on the UI thread. A null style restores the standard overlay. */
+    fun setFunEffect(style: FunEffectOverlayStyle?) {
+        funEffect = style
         overlayView.invalidate()
     }
     
@@ -1554,6 +1562,7 @@ class YOLOView @JvmOverloads constructor(
 
     private inner class OverlayView(context: Context) : View(context) {
         private val paint = Paint().apply { isAntiAlias = true }
+        private val effectRenderer = FunEffectOverlayRenderer(resources.displayMetrics.density, resources.displayMetrics.scaledDensity)
 
         private fun labelText(name: String, confidence: Float, task: YOLOTask) =
             ChineseLabels.display(name, confidence, task, showConfidence)
@@ -1633,14 +1642,16 @@ class YOLOView @JvmOverloads constructor(
         override fun onDraw(canvas: Canvas) {
             super.onDraw(canvas)
             val snapshot = inferenceSnapshot ?: return
-            drawResult(canvas, snapshot.result, snapshot.task, snapshot.isFront)
+            val animating = drawResult(canvas, snapshot.result, snapshot.task, snapshot.isFront)
+            if (animating && !isStopped && isShown && windowVisibility == View.VISIBLE) postInvalidateDelayed(33L)
         }
 
-        fun drawResult(canvas: Canvas, result: YOLOResult, task: YOLOTask, isFrontCamera: Boolean) {
+        /** Return whether a visible sticker requires another animation frame. */
+        fun drawResult(canvas: Canvas, result: YOLOResult, task: YOLOTask, isFrontCamera: Boolean): Boolean {
             
             // Only draw overlays if showOverlays is true
             if (!showOverlays) {
-                return
+                return false
             }
 
             val iw = result.origShape.width.toFloat()
@@ -1684,6 +1695,15 @@ class YOLOView @JvmOverloads constructor(
                 // DETECT
                 // ----------------------------------------
                 YOLOTask.DETECT -> {
+                    val effect = funEffect
+                    if (effect != null) {
+                        for (box in result.boxes) {
+                            if (box.index == effect.classIndex) {
+                                effectRenderer.draw(canvas, mapRect(box.xywh), effect, vw, vh)
+                            }
+                        }
+                        return false
+                    }
                     for (box in result.boxes) {
                         val newColor = colorFor(box.index, box.conf)
 
@@ -1795,6 +1815,36 @@ class YOLOView @JvmOverloads constructor(
                 // POSE
                 // ----------------------------------------
                 YOLOTask.POSE -> {
+                    val effect = funEffect
+                    if (effect != null && effect.headEffect != HeadEffect.NONE) {
+                        val timeMs = android.os.SystemClock.uptimeMillis()
+                        var animating = false
+                        for ((index, box) in result.boxes.withIndex()) {
+                            if (box.index != effect.classIndex) continue
+                            val rect = mapRect(box.xywh)
+                            effectRenderer.draw(canvas, rect, effect, vw, vh)
+
+                            val head = result.keypointsList.getOrNull(index) ?: continue
+                            fun headPoint(index: Int): PointF? {
+                                val confidence = head.conf.getOrNull(index) ?: return null
+                                if (!confidence.isFinite() || confidence < .4f) return null
+                                val (x, y) = head.xyn.getOrNull(index) ?: return null
+                                if (x !in 0f..1f || y !in 0f..1f) return null
+                                val point = mapPoint(x * iw, y * ih)
+                                return point.takeIf { it.x in 0f..vw && it.y in 0f..vh && rect.contains(it.x, it.y) }
+                            }
+
+                            // COCO pose orders the head landmarks as nose, left eye, right eye.
+                            val eyeA = headPoint(1) ?: continue
+                            val eyeB = headPoint(2) ?: continue
+                            if (hypot(eyeB.x - eyeA.x, eyeB.y - eyeA.y) > rect.width() * .65f) continue
+                            if (effectRenderer.drawHeadEffect(canvas, effect.headEffect, eyeA, eyeB, headPoint(0), timeMs)) {
+                                animating = effect.headEffect.animated
+                            }
+                        }
+                        return animating
+                    }
+
                     // Bounding boxes
                     for (box in result.boxes) {
                         val newColor = colorFor(box.index, box.conf)
@@ -1900,6 +1950,7 @@ class YOLOView @JvmOverloads constructor(
                     }
                 }
             }
+            return false
         }
         
         override fun onTouchEvent(event: MotionEvent?): Boolean {

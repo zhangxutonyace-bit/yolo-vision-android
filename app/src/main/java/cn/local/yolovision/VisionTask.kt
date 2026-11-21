@@ -1,5 +1,6 @@
 package cn.local.yolovision
 
+import com.ultralytics.yolo.HeadEffect
 import com.ultralytics.yolo.YOLOTask
 
 enum class VisionTask(val title: String, val detail: String, val suffix: String, val engineTask: YOLOTask, val supportsIou: Boolean = true) {
@@ -16,14 +17,17 @@ enum class VisionTask(val title: String, val detail: String, val suffix: String,
         return "yolo26$size$suffix"
     }
     fun fileName(size: String) = "${modelId(size)}_w8a32.tflite"
-    fun modelUrl(size: String) = "$MODEL_BASE/${fileName(size)}"
 
     companion object {
-        val MODEL_SIZES = listOf("n", "s", "m", "l", "x")
-        const val MODEL_BASE = "https://github.com/ultralytics/yolo-flutter-app/releases/download/v0.6.6"
+        val MODEL_SIZES = listOf("n")
+        fun restoreSize(value: String?) = value.takeIf { it in MODEL_SIZES } ?: "n"
         fun restore(value: String?) = entries.firstOrNull { it.name == value } ?: DETECT
     }
 }
+
+/** Person head effects need landmarks, so the pose model supplies both the boxes and head points. */
+internal fun VisionTask.modelForEffect(enabled: Boolean, config: FunEffectConfig): VisionTask =
+    if (this == VisionTask.DETECT && enabled && config.activeHeadEffect != HeadEffect.NONE) VisionTask.POSE else this
 
 data class VisionSettings(
     val confidence: Float = .25f,
