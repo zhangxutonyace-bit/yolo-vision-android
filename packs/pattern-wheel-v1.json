@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "pattern-wheel",
+  "revision": 1,
+  "template": "pattern_wheel_v1",
+  "color": "#F4CA75",
+  "cycleMs": 6000,
+  "scale": 1.12
+}

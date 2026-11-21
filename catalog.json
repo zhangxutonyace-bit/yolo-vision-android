@@ -2,6 +2,16 @@
   "schemaVersion": 1,
   "effects": [
     {
+      "id": "pattern-wheel",
+      "name": "花纹光轮",
+      "revision": 1,
+      "minAppVersionCode": 8,
+      "template": "pattern_wheel_v1",
+      "isNew": true,
+      "packageUrl": "packs/pattern-wheel-v1.json",
+      "sha256": "7586a6f329c3d506354895bab3056ca5f6a617f1022868be0d3b88a2cf2c982f"
+    },
+    {
       "id": "buddha-halo",
       "name": "佛光环绕",
       "revision": 1,
