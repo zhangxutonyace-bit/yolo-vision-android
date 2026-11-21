@@ -1,4 +1,14 @@
 {
   "schemaVersion": 1,
-  "effects": []
+  "effects": [
+    {
+      "id": "buddha-halo",
+      "name": "佛光环绕",
+      "revision": 1,
+      "minAppVersionCode": 7,
+      "isNew": true,
+      "packageUrl": "packs/buddha-halo-v1.json",
+      "sha256": "e1538a6de340949ebd7b104b78e1f4cb5a918ec5af0ae33c935b38cf40222d62"
+    }
+  ]
 }

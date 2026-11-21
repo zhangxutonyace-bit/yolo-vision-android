@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "buddha-halo",
+  "revision": 1,
+  "template": "head_halo_v1",
+  "color": "#F6CB6A",
+  "cycleMs": 2800,
+  "scale": 1.0
+}
