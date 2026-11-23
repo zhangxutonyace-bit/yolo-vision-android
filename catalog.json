@@ -3,13 +3,13 @@
   "effects": [
     {
       "id": "lightning-rod",
-      "name": "避雷针·雷电",
-      "revision": 1,
-      "minAppVersionCode": 11,
-      "template": "lightning_rod_v1",
+      "name": "头顶避雷针",
+      "revision": 2,
+      "minAppVersionCode": 12,
+      "template": "head_lightning_rod_v1",
       "isNew": true,
-      "packageUrl": "packs/lightning-rod-v1.json",
-      "sha256": "daf1598001231fef7784221389f860ca93ec1c4c8303861b30017d71137d0b2d"
+      "packageUrl": "packs/lightning-rod-v2.json",
+      "sha256": "1696375d76d731c87b25ef9a3bbbf6f4cf8cc9072be1347680728773533922c2"
     },
     {
       "id": "thermos-gold-blue",

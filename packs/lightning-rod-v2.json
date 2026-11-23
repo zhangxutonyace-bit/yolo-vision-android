@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "lightning-rod",
+  "revision": 2,
+  "template": "head_lightning_rod_v1",
+  "color": "#38C6FF",
+  "accentColor": "#9273FF",
+  "cycleMs": 6400,
+  "scale": 1.0
+}
