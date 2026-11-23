@@ -2,6 +2,16 @@
   "schemaVersion": 1,
   "effects": [
     {
+      "id": "lightning-rod",
+      "name": "避雷针·雷电",
+      "revision": 1,
+      "minAppVersionCode": 11,
+      "template": "lightning_rod_v1",
+      "isNew": true,
+      "packageUrl": "packs/lightning-rod-v1.json",
+      "sha256": "daf1598001231fef7784221389f860ca93ec1c4c8303861b30017d71137d0b2d"
+    },
+    {
       "id": "thermos-gold-blue",
       "name": "保温壶·金蓝高亮",
       "revision": 1,
