@@ -2,6 +2,16 @@
   "schemaVersion": 1,
   "effects": [
     {
+      "id": "thermos-gold-blue",
+      "name": "保温壶·金蓝高亮",
+      "revision": 1,
+      "minAppVersionCode": 10,
+      "template": "thermos_trace_v1",
+      "isNew": true,
+      "packageUrl": "packs/thermos-gold-blue-v1.json",
+      "sha256": "cbda75b2d93adbf5ab8e16e64807a15df6407e458594baf83dee570e35d489b6"
+    },
+    {
       "id": "pattern-wheel",
       "name": "花纹光轮",
       "revision": 1,
